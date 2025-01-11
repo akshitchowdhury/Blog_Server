@@ -41,3 +41,11 @@ try {
     res.status(500).json({ message: error.message });
 }
 })
+
+app.delete('/api/blogs/:id',async(req,res)=>{
+    try {
+        const deleteBlog = await Blog.findByIdAndDelete(req.params.id);
+        res.status(200).json(deleteBlog);} catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+})
